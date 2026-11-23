@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,406 +12,564 @@
 
 <style>
 :root {
-  --peach:#e99b78;
-  --deep:#a65d46;
-  --cream:#fff8ef;
-  --light:#ffeadc;
-  --pink:#f5c9b8;
-  --brown:#755143;
-  --white:#fffdf9;
+  --peach: #e99b78;
+  --deep: #a65d46;
+  --cream: #fff8ef;
+  --light: #ffeadc;
+  --brown: #755143;
+  --white: #fffdf9;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Baloo 2',cursive;
-  background:var(--cream);
-  color:var(--brown);
-  overflow-x:hidden;
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Baloo 2', cursive;
+  background: var(--cream);
+  color: var(--brown);
+  overflow-x: hidden;
 }
-button{font-family:inherit;cursor:pointer}
-section{padding:75px 20px;scroll-margin-top:60px}
-h2.section-title{
-  font-family:'DM Serif Display',serif;
-  font-size:clamp(30px,7vw,44px);
-  color:var(--deep);
-  text-align:center;
-  margin-bottom:10px;
+
+button { font-family: inherit; cursor: pointer; }
+
+section { padding: 75px 20px; scroll-margin-top: 65px; }
+
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(30px, 7vw, 44px);
+  color: var(--deep);
+  text-align: center;
+  margin-bottom: 10px;
 }
-.section-sub{
-  text-align:center;
-  color:#9b7664;
-  margin:0 auto 35px;
-  max-width:520px;
-  font-size:16px;
+
+.section-sub {
+  text-align: center;
+  color: #9b7664;
+  margin: 0 auto 35px;
+  max-width: 520px;
+  font-size: 16px;
 }
-.brand{
-  font-weight:800;
-  letter-spacing:2px;
-  color:var(--deep);
-  font-size:14px;
+
+.brand {
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--deep);
+  font-size: 14px;
 }
-.brand small{
-  display:block;
-  font-size:9px;
-  letter-spacing:4px;
-  text-align:center;
+
+.brand small {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-align: center;
 }
-.pill{
-  display:inline-block;
-  background:#fff8f0;
-  border:1px solid #f1d3c1;
-  border-radius:30px;
-  padding:7px 17px;
-  font-size:12px;
-  letter-spacing:2px;
-  color:var(--deep);
+
+.pill {
+  display: inline-block;
+  background: #fff8f0;
+  border: 1px solid #f1d3c1;
+  border-radius: 30px;
+  padding: 7px 17px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--deep);
 }
-.primary-btn{
-  display:inline-block;
-  border:0;
-  border-radius:40px;
-  background:var(--peach);
-  color:white;
-  padding:13px 27px;
-  font-size:16px;
-  font-weight:700;
-  box-shadow:0 7px 18px #b9795830;
-  transition:.3s;
+
+.primary-btn {
+  border: 0;
+  border-radius: 40px;
+  background: var(--peach);
+  color: white;
+  padding: 13px 27px;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 0 7px 18px #b9795830;
+  transition: .3s;
 }
-.primary-btn:hover{transform:translateY(-4px);background:#d98463}
-.secondary-btn{
-  border:1px solid #e5b59e;
-  background:#fffaf5;
-  color:var(--deep);
-  border-radius:30px;
-  padding:10px 20px;
-  font-size:14px;
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+  background: #d98463;
 }
-.welcome{
-  min-height:100vh;
-  background:linear-gradient(145deg,#fff7ed,#ffdfca,#fff0e3);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-  padding:90px 20px 55px;
+
+.welcome {
+  min-height: 100vh;
+  background: linear-gradient(145deg, #fff7ed, #ffdfca, #fff0e3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 90px 20px 55px;
 }
-.welcome-brand{position:absolute;top:25px}
-.welcome-cake{
-  font-size:clamp(85px,20vw,135px);
-  margin:20px 0;
-  animation:bounce 2.5s infinite ease-in-out;
-  filter:drop-shadow(0 10px 10px #b7795830);
+
+.welcome-brand { position: absolute; top: 25px; }
+
+.welcome-cake {
+  font-size: clamp(85px, 20vw, 135px);
+  margin: 20px 0;
+  animation: bounce 2.5s infinite ease-in-out;
+  filter: drop-shadow(0 10px 10px #b7795830);
 }
-@keyframes bounce{50%{transform:translateY(-13px)}}
-.float{
-  position:absolute;
-  font-size:27px;
-  animation:float 4s ease-in-out infinite;
-  pointer-events:none;
+
+@keyframes bounce {
+  50% { transform: translateY(-13px); }
 }
-.f1{top:20%;left:9%}
-.f2{top:27%;right:10%;animation-delay:1s}
-.f3{bottom:20%;left:12%;animation-delay:2s}
-.f4{bottom:23%;right:12%;animation-delay:.5s}
-@keyframes float{
-  50%{transform:translateY(-18px) rotate(10deg)}
+
+.float {
+  position: absolute;
+  font-size: 27px;
+  animation: float 4s ease-in-out infinite;
+  pointer-events: none;
 }
-.welcome h1{
-  font-family:'DM Serif Display',serif;
-  font-size:clamp(40px,10vw,68px);
-  color:var(--deep);
-  line-height:1.08;
-  max-width:720px;
-  margin:18px auto;
+
+.f1 { top: 20%; left: 9%; }
+.f2 { top: 27%; right: 10%; animation-delay: 1s; }
+.f3 { bottom: 20%; left: 12%; animation-delay: 2s; }
+.f4 { bottom: 23%; right: 12%; animation-delay: .5s; }
+
+@keyframes float {
+  50% { transform: translateY(-18px) rotate(10deg); }
 }
-.welcome p{max-width:360px;font-size:17px;color:#936b59;margin:0 auto 25px}
-#welcomeNote{display:none;margin-top:20px;color:var(--deep);font-size:17px}
-nav{
-  position:sticky;
-  top:0;
-  z-index:10;
-  background:#fffaf2ed;
-  backdrop-filter:blur(10px);
-  display:flex;
-  justify-content:center;
-  gap:17px;
-  padding:12px 8px;
-  overflow-x:auto;
-  border-bottom:1px solid #f2dfd0;
+
+.welcome h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(40px, 10vw, 68px);
+  color: var(--deep);
+  line-height: 1.08;
+  max-width: 720px;
+  margin: 18px auto;
 }
-nav a{
-  text-decoration:none;
-  white-space:nowrap;
-  color:var(--deep);
-  font-size:13px;
-  font-weight:700;
+
+.welcome p {
+  max-width: 390px;
+  font-size: 17px;
+  color: #936b59;
+  margin: 0 auto 25px;
 }
-nav a:hover{color:var(--peach)}
-.countdown-section{
-  background:var(--white);
-  text-align:center;
+
+#welcomeNote {
+  display: none;
+  margin-top: 20px;
+  color: var(--deep);
+  font-size: 17px;
 }
-.countdown{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-  max-width:540px;
-  margin:30px auto;
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fffaf2ed;
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  gap: 17px;
+  padding: 12px 8px;
+  overflow-x: auto;
+  border-bottom: 1px solid #f2dfd0;
 }
-.time-box{
-  background:#fff0e4;
-  border:1px solid #f3d6c4;
-  border-radius:18px;
-  padding:20px 5px;
+
+nav a {
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--deep);
+  font-size: 13px;
+  font-weight: 700;
 }
-.time-box strong{
-  display:block;
-  font-size:clamp(25px,7vw,39px);
-  color:var(--deep);
-  line-height:1.2;
+
+nav a:hover { color: var(--peach); }
+
+.countdown-section {
+  background: var(--white);
+  text-align: center;
 }
-.time-box span{font-size:12px;color:#9c7461}
-.count-note{color:#a57c67;font-size:14px}
-.celebrate{
-  text-align:center;
-  background:linear-gradient(135deg,#ffe6d6,#fff6eb);
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 540px;
+  margin: 30px auto;
 }
-.celebrate .big-cake{font-size:90px;margin:18px}
-.celebrate h2{font-family:'Great Vibes',cursive;font-size:clamp(48px,10vw,76px);color:#b96e52}
-.celebrate p{max-width:500px;margin:10px auto;font-size:17px}
-.gallery-section{background:#fffaf4}
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:13px;
-  max-width:800px;
-  margin:auto;
+
+.time-box {
+  background: #fff0e4;
+  border: 1px solid #f3d6c4;
+  border-radius: 18px;
+  padding: 20px 5px;
 }
-.photo{
-  border-radius:18px;
-  overflow:hidden;
-  aspect-ratio:1/1.12;
-  background:#f5d6c3;
-  cursor:pointer;
-  position:relative;
-  border:5px solid white;
-  box-shadow:0 5px 18px #9e70501c;
+
+.time-box strong {
+  display: block;
+  font-size: clamp(25px, 7vw, 39px);
+  color: var(--deep);
+  line-height: 1.2;
 }
-.photo img{width:100%;height:100%;object-fit:cover;transition:.4s}
-.photo:hover img{transform:scale(1.06)}
-.photo span{
-  position:absolute;
-  bottom:0;left:0;right:0;
-  padding:10px;
-  background:linear-gradient(transparent,#593a2dcc);
-  color:white;
-  font-size:14px;
+
+.time-box span { font-size: 12px; color: #9c7461; }
+
+.count-note { color: #a57c67; font-size: 14px; }
+
+.celebrate {
+  text-align: center;
+  background: linear-gradient(135deg, #ffe6d6, #fff6eb);
 }
-#lightbox{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:30;
-  background:#241812ed;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
+
+.big-cake { font-size: 90px; margin: 18px; }
+
+.celebrate h2, .finale h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(48px, 10vw, 76px);
+  color: #b96e52;
 }
-#lightbox img{max-width:95%;max-height:85vh;border-radius:15px}
-#lightbox button{
-  position:absolute;top:20px;right:22px;
-  color:white;background:none;border:0;font-size:35px;
+
+.celebrate p {
+  max-width: 500px;
+  margin: 10px auto;
+  font-size: 17px;
 }
-.memories{
-  background:linear-gradient(140deg,#fff0e5,#fff9ef);
+
+.gallery-section { background: #fffaf4; }
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+  max-width: 800px;
+  margin: auto;
 }
-.memory-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:13px;
-  max-width:850px;
-  margin:auto;
+
+.photo {
+  border-radius: 18px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1.12;
+  background: #f5d6c3;
+  cursor: pointer;
+  position: relative;
+  border: 5px solid white;
+  box-shadow: 0 5px 18px #9e70501c;
 }
-.memory-card{
-  background:white;
-  padding:23px 12px;
-  border-radius:18px;
-  text-align:center;
-  box-shadow:0 5px 15px #9b65401c;
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: .4s;
 }
-.memory-card b{display:block;color:var(--deep);font-size:16px}
-.memory-card span{font-size:29px;display:block;margin-bottom:8px}
-.games{background:#fffaf4}
-.game-card{
-  background:white;
-  border:1px solid #f1d7c7;
-  border-radius:23px;
-  padding:23px 15px;
-  max-width:490px;
-  margin:25px auto;
-  text-align:center;
-  box-shadow:0 7px 20px #9d725020;
+
+.photo:hover img { transform: scale(1.06); }
+
+.photo span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background: linear-gradient(transparent, #593a2dcc);
+  color: white;
+  font-size: 14px;
 }
-.game-card h3{font-family:'DM Serif Display',serif;font-size:26px;color:var(--deep)}
-.game-card p{font-size:14px;color:#94705f;margin:7px 0 15px}
-.memory-board{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:9px;
-  max-width:350px;
-  margin:20px auto;
+
+#lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: #241812ed;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
-.memory-tile{
-  border:0;
-  background:#f9d7c5;
-  border-radius:13px;
-  min-height:66px;
-  font-size:27px;
-  color:var(--deep);
+
+#lightbox img {
+  max-width: 95%;
+  max-height: 85vh;
+  border-radius: 15px;
 }
-.memory-tile.matched{background:#fff1e8}
-.game-score{color:var(--deep);font-weight:700}
-.balloon-area{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:10px;
-  max-width:350px;
-  margin:20px auto;
+
+#lightbox button {
+  position: absolute;
+  top: 20px;
+  right: 22px;
+  color: white;
+  background: none;
+  border: 0;
+  font-size: 35px;
 }
-.balloon{
-  border:0;
-  background:transparent;
-  font-size:36px;
-  padding:5px 0;
-  animation:balloon 1.7s ease-in-out infinite alternate;
+
+.memories {
+  background: linear-gradient(140deg, #fff0e5, #fff9ef);
 }
-.balloon:nth-child(even){animation-delay:.5s}
-.balloon:disabled{opacity:.35;animation:none}
-@keyframes balloon{to{transform:translateY(-9px)}}
-.scratch-section{
-  background:linear-gradient(145deg,#ffe5d4,#fff7ed);
-  text-align:center;
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 13px;
+  max-width: 850px;
+  margin: auto;
 }
-.scratch-card{
-  max-width:390px;
-  margin:25px auto;
-  position:relative;
-  background:white;
-  padding:22px;
-  border-radius:22px;
-  box-shadow:0 8px 22px #a16b4925;
+
+.memory-card {
+  background: white;
+  padding: 23px 12px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 5px 15px #9b65401c;
 }
-.scratch-reveal{
-  min-height:145px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:20px;
-  line-height:1.5;
-  color:var(--deep);
-  padding:12px;
+
+.memory-card b {
+  display: block;
+  color: var(--deep);
+  font-size: 16px;
 }
-#scratchCanvas{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  border-radius:22px;
-  touch-action:none;
-  cursor:crosshair;
+
+.memory-card span {
+  font-size: 29px;
+  display: block;
+  margin-bottom: 8px;
 }
-.letter-section{background:#fffaf4;text-align:center}
-.letter{
-  max-width:600px;
-  background:#fff;
-  padding:28px 23px;
-  border-radius:18px;
-  margin:25px auto;
-  text-align:left;
-  box-shadow:0 7px 25px #986c4c20;
-  display:none;
-  line-height:1.9;
-  animation:appear .7s ease;
+
+.games { background: #fffaf4; }
+
+.game-card {
+  background: white;
+  border: 1px solid #f1d7c7;
+  border-radius: 23px;
+  padding: 23px 15px;
+  max-width: 490px;
+  margin: 25px auto;
+  text-align: center;
+  box-shadow: 0 7px 20px #9d725020;
 }
-.letter h3{font-family:'Great Vibes',cursive;font-size:37px;color:var(--deep);margin-bottom:10px}
-.gift-section{
-  background:linear-gradient(135deg,#ffeadb,#fff5e9);
-  text-align:center;
+
+.game-card h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  color: var(--deep);
 }
-.gift{
-  font-size:105px;
-  display:block;
-  margin:20px auto;
-  border:0;
-  background:none;
-  animation:bounce 2s infinite;
+
+.game-card p {
+  font-size: 14px;
+  color: #94705f;
+  margin: 7px 0 15px;
 }
-.gift-message{
-  display:none;
-  max-width:540px;
-  background:#fff;
-  padding:26px 22px;
-  border-radius:22px;
-  margin:25px auto;
-  line-height:1.9;
-  box-shadow:0 8px 25px #986c4c20;
-  animation:appear .7s ease;
+
+.memory-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 9px;
+  max-width: 350px;
+  margin: 20px auto;
 }
-.finale{
-  text-align:center;
-  background:linear-gradient(145deg,#ffdfcc,#fff6e9);
-  padding:90px 20px;
+
+.memory-tile {
+  border: 0;
+  background: #f9d7c5;
+  border-radius: 13px;
+  min-height: 66px;
+  font-size: 27px;
+  color: var(--deep);
 }
-.finale h2{font-family:'Great Vibes',cursive;font-size:clamp(50px,11vw,80px);color:var(--deep)}
-.finale .final-cake{font-size:80px;margin:15px}
-.studio-end{
-  background:#fffaf3;
-  text-align:center;
-  padding:35px 15px;
-  color:#986b55;
+
+.memory-tile.matched {
+  background: #fff1e8;
+  opacity: .7;
 }
-.studio-end strong{display:block;letter-spacing:3px;font-size:16px;color:var(--deep)}
-.studio-end small{display:block;margin-top:7px;letter-spacing:1px}
-.reveal{opacity:0;transform:translateY(20px);transition:.7s}
-.reveal.visible{opacity:1;transform:translateY(0)}
-@keyframes appear{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
-@media(min-width:650px){
- .gallery{grid-template-columns:repeat(3,1fr)}
- .memory-grid{grid-template-columns:repeat(3,1fr)}
+
+.game-score {
+  color: var(--deep);
+  font-weight: 700;
 }
-@media(max-width:420px){
- nav{justify-content:flex-start}
- .memory-board{gap:6px}
- .memory-tile{min-height:59px}
- .countdown{gap:7px}
- .time-box{padding:15px 2px}
+
+.balloon-area {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  max-width: 350px;
+  margin: 20px auto;
+}
+
+.balloon {
+  border: 0;
+  background: transparent;
+  font-size: 36px;
+  padding: 5px 0;
+  animation: balloon 1.7s ease-in-out infinite alternate;
+}
+
+.balloon:nth-child(even) { animation-delay: .5s; }
+.balloon:disabled { opacity: .3; animation: none; }
+
+@keyframes balloon {
+  to { transform: translateY(-9px); }
+}
+
+.scratch-section {
+  background: linear-gradient(145deg, #ffe5d4, #fff7ed);
+  text-align: center;
+}
+
+.scratch-card {
+  max-width: 390px;
+  margin: 25px auto;
+  position: relative;
+  background: white;
+  padding: 22px;
+  border-radius: 22px;
+  box-shadow: 0 8px 22px #a16b4925;
+}
+
+.scratch-reveal {
+  min-height: 145px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--deep);
+  padding: 12px;
+}
+
+#scratchCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 22px;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.letter-section {
+  background: #fffaf4;
+  text-align: center;
+}
+
+.letter {
+  max-width: 600px;
+  background: #fff;
+  padding: 28px 23px;
+  border-radius: 18px;
+  margin: 25px auto;
+  text-align: left;
+  box-shadow: 0 7px 25px #986c4c20;
+  display: none;
+  line-height: 1.9;
+}
+
+.letter h3 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 37px;
+  color: var(--deep);
+  margin-bottom: 10px;
+}
+
+.letter p { margin: 9px 0; }
+
+.gift-section {
+  background: linear-gradient(135deg, #ffeadb, #fff5e9);
+  text-align: center;
+}
+
+.gift {
+  font-size: 105px;
+  display: block;
+  margin: 20px auto;
+  border: 0;
+  background: none;
+  animation: bounce 2s infinite;
+}
+
+.gift-message {
+  display: none;
+  max-width: 540px;
+  background: #fff;
+  padding: 26px 22px;
+  border-radius: 22px;
+  margin: 25px auto;
+  line-height: 1.9;
+  box-shadow: 0 8px 25px #986c4c20;
+}
+
+.finale {
+  text-align: center;
+  background: linear-gradient(145deg, #ffdfcc, #fff6e9);
+  padding: 90px 20px;
+}
+
+.finale h2 { font-size: clamp(50px, 11vw, 80px); }
+
+.final-cake { font-size: 80px; margin: 15px; }
+
+.studio-end {
+  background: #fffaf3;
+  text-align: center;
+  padding: 35px 15px;
+  color: #986b55;
+}
+
+.studio-end strong {
+  display: block;
+  letter-spacing: 3px;
+  font-size: 16px;
+  color: var(--deep);
+}
+
+.studio-end small {
+  display: block;
+  margin-top: 7px;
+  letter-spacing: 1px;
+}
+
+@media (min-width: 650px) {
+  .gallery { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .memory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 420px) {
+  nav { justify-content: flex-start; }
+  .memory-board { gap: 6px; }
+  .memory-tile { min-height: 59px; }
+  .countdown { gap: 7px; }
+  .time-box { padding: 15px 2px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- WELCOME -->
 <section class="welcome" id="home">
   <div class="welcome-brand brand">
     INFINITE VISION STUDIO
     <small>PRESENTS</small>
   </div>
+
   <div class="float f1">🎈</div>
   <div class="float f2">✨</div>
   <div class="float f3">🌸</div>
   <div class="float f4">🎀</div>
 
   <div class="welcome-cake">🎂</div>
+
   <span class="pill">A SPECIAL DAY • A SPECIAL SURPRISE</span>
+
   <h1>A Little Birthday Magic Awaits!</h1>
+
   <p>Someone made something special just for you. Ready to make some beautiful memories?</p>
-  <button class="primary-btn" onclick="startExperience()">Open Your Surprise ✨</button>
-  <div id="welcomeNote">Yayyy! Your birthday adventure begins! 🥳</div>
+
+  <button class="primary-btn" onclick="startExperience()">
+    Open Your Surprise ✨
+  </button>
+
+  <div id="welcomeNote">
+    Yayyy! Your birthday adventure begins! 🥳
+  </div>
 </section>
 
 <nav>
@@ -421,55 +578,90 @@ nav a:hover{color:var(--peach)}
   <a href="#gallery">Gallery</a>
   <a href="#memories">Memories</a>
   <a href="#games">Games</a>
+  <a href="#scratch">Scratch</a>
   <a href="#letter">Letter</a>
   <a href="#gift">Surprise</a>
 </nav>
 
-<!-- COUNTDOWN -->
-<section class="countdown-section reveal" id="countdown">
+<section class="countdown-section" id="countdown">
   <h2 class="section-title">The Big Day Is Coming! ⏳</h2>
   <p class="section-sub">Every second brings us closer to your special day.</p>
+
   <div class="countdown">
     <div class="time-box"><strong id="days">00</strong><span>Days</span></div>
     <div class="time-box"><strong id="hours">00</strong><span>Hours</span></div>
     <div class="time-box"><strong id="minutes">00</strong><span>Minutes</span></div>
     <div class="time-box"><strong id="seconds">00</strong><span>Seconds</span></div>
   </div>
-  <p class="count-note" id="countdownNote">Counting down to a day full of magic! 💗</p>
+
+  <p class="count-note" id="countdownNote">
+    Counting down to a day full of magic! 💗
+  </p>
 </section>
 
-<!-- CELEBRATION -->
-<section class="celebrate reveal" id="celebration">
+<section class="celebrate" id="celebration">
   <div class="big-cake">🎂</div>
   <h2>Happy Birthday, Aarohi!</h2>
-  <p>Today is all about you, your beautiful smile and all the happiness you deserve. May your day be filled with laughter, love and little magical moments! 🌸</p>
+  <p>
+    Today is all about you, your beautiful smile and all the happiness
+    you deserve. May your day be filled with laughter, love and little
+    magical moments! 🌸
+  </p>
   <div style="font-size:32px;margin-top:18px">🎈 🎀 🧁 🎉</div>
 </section>
 
-<!-- GALLERY -->
-<section class="gallery-section reveal" id="gallery">
+<section class="gallery-section" id="gallery">
   <h2 class="section-title">Our Little Gallery 📸</h2>
-  <p class="section-sub">A few moments, a thousand memories. Tap a picture to see it bigger!</p>
+  <p class="section-sub">
+    A few moments, a thousand memories. Tap a picture to see it bigger!
+  </p>
+
   <div class="gallery">
-    <div class="photo" onclick="showPhoto(this)"><img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=650" alt="Birthday celebration"><span>Little celebrations ✨</span></div>
-    <div class="photo" onclick="showPhoto(this)"><img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=650" alt="Party decorations"><span>Happy moments 🎀</span></div>
-    <div class="photo" onclick="showPhoto(this)"><img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=650" alt="Birthday cake"><span>Sweet memories 🎂</span></div>
-    <div class="photo" onclick="showPhoto(this)"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=650" alt="Party lights"><span>Moments to remember 🌸</span></div>
-    <div class="photo" onclick="showPhoto(this)"><img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=650" alt="Celebration"><span>All things lovely 💗</span></div>
-    <div class="photo" onclick="showPhoto(this)"><img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=650" alt="Party"><span>Forever memories 🥳</span></div>
+    <div class="photo" onclick="showPhoto(this)">
+      <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=650" alt="Birthday celebration">
+      <span>Little celebrations ✨</span>
+    </div>
+
+    <div class="photo" onclick="showPhoto(this)">
+      <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=650" alt="Party decorations">
+      <span>Happy moments 🎀</span>
+    </div>
+
+    <div class="photo" onclick="showPhoto(this)">
+      <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=650" alt="Birthday cake">
+      <span>Sweet memories 🎂</span>
+    </div>
+
+    <div class="photo" onclick="showPhoto(this)">
+      <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=650" alt="Party lights">
+      <span>Moments to remember 🌸</span>
+    </div>
+
+    <div class="photo" onclick="showPhoto(this)">
+      <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=650" alt="Celebration">
+      <span>All things lovely 💗</span>
+    </div>
+
+    <div class="photo" onclick="showPhoto(this)">
+      <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=650" alt="Party">
+      <span>Forever memories 🥳</span>
+    </div>
   </div>
-  <p style="text-align:center;font-size:12px;color:#a47d69;margin-top:17px">Sample photos shown for demonstration. Personal photos can be added for every order.</p>
+
+  <p style="text-align:center;font-size:12px;color:#a47d69;margin-top:17px">
+    Sample photos shown for demonstration. Personal photos can be added for every order.
+  </p>
 </section>
 
 <div id="lightbox" onclick="closePhoto()">
   <button aria-label="Close image">×</button>
-  <img id="largePhoto" src="" alt="Enlarged gallery photo">
+  <img id="largePhoto" src="" alt="Enlarged gallery photo" onclick="event.stopPropagation()">
 </div>
 
-<!-- MEMORY LANE -->
-<section class="memories reveal" id="memories">
+<section class="memories" id="memories">
   <h2 class="section-title">A Little Memory Lane 🌷</h2>
   <p class="section-sub">Because the little things make the biggest memories.</p>
+
   <div class="memory-grid">
     <div class="memory-card"><span>🌸</span><b>Beautiful Beginnings</b><p>Every lovely story starts somewhere.</p></div>
     <div class="memory-card"><span>📸</span><b>Picture Perfect</b><p>Some moments deserve to stay forever.</p></div>
@@ -480,146 +672,172 @@ nav a:hover{color:var(--peach)}
   </div>
 </section>
 
-<!-- GAMES -->
-<section class="games reveal" id="games">
+<section class="games" id="games">
   <h2 class="section-title">Let's Play! 🎮</h2>
   <p class="section-sub">A birthday isn't complete without a little fun!</p>
 
   <div class="game-card">
     <h3>🧩 Memory Match</h3>
     <p>Find all six matching pairs. How many moves will you need?</p>
+
     <div class="game-score" id="memoryScore">Moves: 0 | Pairs: 0/6</div>
     <div class="memory-board" id="memoryBoard"></div>
     <p id="memoryResult" aria-live="polite"></p>
+
     <button class="primary-btn" onclick="newMemoryGame()">Play Again ↻</button>
   </div>
 
   <div class="game-card">
     <h3>🎈 Pop the Balloons</h3>
     <p>Tap all ten balloons to complete your challenge!</p>
+
     <div class="game-score" id="balloonScore">Score: 0/10</div>
     <div class="balloon-area" id="balloonArea"></div>
     <p id="balloonResult" aria-live="polite"></p>
+
     <button class="primary-btn" onclick="newBalloonGame()">Restart Game ↻</button>
   </div>
 </section>
 
-<!-- SCRATCH CARD -->
-<section class="scratch-section reveal" id="scratch">
+<section class="scratch-section" id="scratch">
   <h2 class="section-title">A Hidden Little Wish! ✨</h2>
   <p class="section-sub">Something sweet is waiting underneath. Scratch to discover!</p>
+
   <div class="scratch-card">
     <div class="scratch-reveal">
       You are loved, you are special, and you deserve all the happiness in the world! 💗
     </div>
     <canvas id="scratchCanvas" aria-label="Scratch to reveal the birthday wish"></canvas>
   </div>
-  <p style="font-size:13px;color:#9b7664">Use your finger or mouse to scratch the card.</p>
+
+  <p style="font-size:13px;color:#9b7664">
+    Use your finger or mouse to scratch the card.
+  </p>
 </section>
 
-<!-- LETTER -->
-<section class="letter-section reveal" id="letter">
+<section class="letter-section" id="letter">
   <h2 class="section-title">A Little Letter For You 💌</h2>
   <p class="section-sub">Some feelings deserve their own little page.</p>
+
   <div style="font-size:65px;margin:15px">💌</div>
+
   <button class="primary-btn" onclick="toggleLetter()">Open Your Letter</button>
+
   <article class="letter" id="birthdayLetter">
     <h3>Dear Aarohi,</h3>
     <p>Happy Birthday! 🥳</p>
-    <p>Today is a reminder of how wonderful you are and how much happiness you bring into the world.</p>
-    <p>May this new chapter bring you exciting adventures, beautiful friendships, endless laughter and countless reasons to smile.</p>
-    <p>Never stop dreaming, never stop shining and always remember how special you are.</p>
+    <p>
+      Today is a reminder of how wonderful you are and how much
+      happiness you bring into the world.
+    </p>
+    <p>
+      May this new chapter bring you exciting adventures, beautiful
+      friendships, endless laughter and countless reasons to smile.
+    </p>
+    <p>
+      Never stop dreaming, never stop shining and always remember
+      how special you are.
+    </p>
     <p>Here's to more memories, more laughter and a year full of magic!</p>
     <p><strong>Lots of birthday wishes and love! 🎀</strong></p>
   </article>
 </section>
 
-<!-- MYSTERY GIFT -->
-<section class="gift-section reveal" id="gift">
+<section class="gift-section" id="gift">
   <h2 class="section-title">One More Surprise! 🎁</h2>
   <p class="section-sub">A tiny gift is waiting just for you. Tap to open!</p>
-  <button class="gift" id="giftBox" onclick="openGift()" aria-label="Open mystery gift">🎁</button>
+
+  <button class="gift" id="giftBox" onclick="openGift()" aria-label="Open mystery gift">
+    🎁
+  </button>
+
   <p id="giftHint" style="color:#a16d57">Tap your mystery gift! ✨</p>
+
   <div class="gift-message" id="giftMessage">
-    <h2 style="font-family:'Great Vibes',cursive;font-size:43px;color:#a65d46">Surpriseeee! 🎉</h2>
-    <p style="margin-top:12px">Here's a little reminder that you deserve happiness, laughter, sweet surprises and all the beautiful things life has to offer! 💗</p>
-    <p style="margin-top:12px">Keep smiling, keep shining and enjoy every little moment! 🌸</p>
+    <h2 style="font-family:'Great Vibes',cursive;font-size:43px;color:#a65d46">
+      Surpriseeee! 🎉
+    </h2>
+    <p style="margin-top:12px">
+      Here's a little reminder that you deserve happiness, laughter,
+      sweet surprises and all the beautiful things life has to offer! 💗
+    </p>
+    <p style="margin-top:12px">
+      Keep smiling, keep shining and enjoy every little moment! 🌸
+    </p>
     <div style="font-size:30px;margin-top:15px">🎀 🧁 🎈</div>
   </div>
 </section>
 
-<!-- FINALE -->
-<section class="finale reveal" id="finale">
+<section class="finale" id="finale">
   <div class="final-cake">🎂</div>
   <h2>Make A Wish, Aarohi!</h2>
-  <p style="max-width:430px;margin:15px auto">May your days be colourful, your dreams be big and your smile never fade. Happy Birthday! 💗</p>
+  <p style="max-width:430px;margin:15px auto">
+    May your days be colourful, your dreams be big and your smile
+    never fade. Happy Birthday! 💗
+  </p>
   <div style="font-size:32px;margin:22px">🎉 🎈 🌸 ✨ 🎀</div>
-  <button class="primary-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to the Beginning ↑</button>
+  <button class="primary-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    Back to the Beginning ↑
+  </button>
 </section>
 
-<!-- STUDIO BRANDING -->
 <footer class="studio-end">
   <strong>INFINITE VISION STUDIO</strong>
   <small>CRAFTING LITTLE MOMENTS OF MAGIC ✨</small>
-  <p style="margin-top:12px;font-size:12px">A creative experience by Infinite Vision Studio</p>
+  <p style="margin-top:12px;font-size:12px">
+    A creative experience by Infinite Vision Studio
+  </p>
 </footer>
 
 <script>
-/* CUSTOMISE THE SAMPLE BIRTHDAY DATE HERE.
-   Format: YYYY-MM-DD
-   Current sample: 15 December 2026
-*/
-const birthdayDate = new Date(2026,11,15,0,0,0);
+/* BIRTHDAY DATE: 15 DECEMBER 2026 */
+const birthdayDate = new Date(2026, 11, 15, 0, 0, 0);
 
-function startExperience(){
-  document.getElementById('welcomeNote').style.display='block';
-  document.getElementById('celebration').scrollIntoView({behavior:'smooth'});
+/* WELCOME BUTTON */
+function startExperience() {
+  document.getElementById('welcomeNote').style.display = 'block';
+  document.getElementById('countdown').scrollIntoView({behavior:'smooth'});
 }
 
 /* COUNTDOWN */
-function updateCountdown(){
-  const now=new Date();
-  let target=new Date(birthdayDate);
-  if(now>target){
-    target=new Date(now.getFullYear(),birthdayDate.getMonth(),birthdayDate.getDate(),0,0,0);
-    if(target<=now)target.setFullYear(target.getFullYear()+1);
+function updateCountdown() {
+  const now = new Date();
+  let target = new Date(birthdayDate);
+
+  if (now > target) {
+    target = new Date(
+      now.getFullYear(),
+      birthdayDate.getMonth(),
+      birthdayDate.getDate(),
+      0, 0, 0
+    );
+
+    if (target <= now) target.setFullYear(target.getFullYear() + 1);
   }
-  const diff=Math.max(0,target-now);
-  const values={
-    days:Math.floor(diff/86400000),
-    hours:Math.floor(diff/3600000)%24,
-    minutes:Math.floor(diff/60000)%60,
-    seconds:Math.floor(diff/1000)%60
+
+  const diff = Math.max(0, target - now);
+
+  const values = {
+    days: Math.floor(diff / 86400000),
+    hours: Math.floor(diff / 3600000) % 24,
+    minutes: Math.floor(diff / 60000) % 60,
+    seconds: Math.floor(diff / 1000) % 60
   };
-  Object.keys(values).forEach(k=>{
-    document.getElementById(k).textContent=String(values[k]).padStart(2,'0');
+
+  Object.keys(values).forEach(function(key) {
+    document.getElementById(key).textContent =
+      String(values[key]).padStart(2, '0');
   });
-  document.getElementById('countdownNote').textContent=
-    diff===0?'The special day is here! Happy Birthday! 🎂':'Counting down to a day full of magic! 💗';
+
+  document.getElementById('countdownNote').textContent =
+    diff === 0
+      ? 'The special day is here! Happy Birthday! 🎂'
+      : 'Counting down to a day full of magic! 💗';
 }
+
 updateCountdown();
-setInterval(updateCountdown,1000);
+setInterval(updateCountdown, 1000);
 
 /* GALLERY LIGHTBOX */
-function showPhoto(el){
-  document.getElementById('largePhoto').src=el.querySelector('img').src;
-  document.getElementById('lightbox').style.display='flex';
-}
-function closePhoto(){
-  document.getElementById('lightbox').style.display='none';
-}
-
-/* MEMORY MATCH */
-let memorySymbols=['🎂','🎀','🎁','🌸','🎈','🧁'];
-let memoryCards=[],memoryFlipped=[],memoryMatched=[];
-let memoryMoves=0,memoryLocked=false;
-
-function newMemoryGame(){
-  memoryCards=[...memorySymbols,...memorySymbols].sort(()=>Math.random()-.5);
-  memoryFlipped=[];
-  memoryMatched=[];
-  memoryMoves=0;
-  memoryLocked=false;
-  document.getElementById('memoryResult').textContent='';
-  updateMemoryScore();
-  const board=document.getElementById('memoryBoard
+function showPhoto(element) {
+  const image = element.query
