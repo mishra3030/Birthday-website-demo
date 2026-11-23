@@ -543,7 +543,13 @@ nav a:hover { color: var(--peach); }
 </head>
 
 <body>
+<audio id="bgMusic" loop preload="auto">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 
+<button id="musicButton" onclick="toggleMusic()">
+  🎵 Play Music
+</button>
 <section class="welcome" id="home">
   <div class="welcome-brand brand">
     INFINITE VISION STUDIO
@@ -841,3 +847,17 @@ setInterval(updateCountdown, 1000);
 /* GALLERY LIGHTBOX */
 function showPhoto(element) {
   const image = element.query
+  Selector('img');
+  document.getElementById('largePhoto').src = image.src;
+  document.getElementById('lightbox').style.display = 'flex';
+}
+
+function closePhoto() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    closePhoto();
+  }
+});
