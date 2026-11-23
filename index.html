@@ -845,9 +845,9 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 /* GALLERY LIGHTBOX */
+/* GALLERY LIGHTBOX */
 function showPhoto(element) {
-  const image = element.query
-  Selector('img');
+  const image = element.querySelector('img');
   document.getElementById('largePhoto').src = image.src;
   document.getElementById('lightbox').style.display = 'flex';
 }
@@ -857,7 +857,223 @@ function closePhoto() {
 }
 
 document.addEventListener('keydown', function(event) {
-  if (event.key === 'Escape') {
-    closePhoto();
-  }
+  if (event.key === 'Escape') closePhoto();
 });
+
+/* MEMORY MATCH GAME */
+let memoryMoves = 0;
+let memoryPairs = 0;
+let memoryFirst = null;
+let memoryLocked = false;
+
+function newMemoryGame() {
+  const symbols = ['🎂', '🎈', '🎀', '🌸', '🧁', '🎁'];
+  const cards = [...symbols, ...symbols].sort(() => Math.random() - 0.5);
+  const board = document.getElementById('memoryBoard');
+
+  memoryMoves = 0;
+  memoryPairs = 0;
+  memoryFirst = null;
+  memoryLocked = false;
+
+  document.getElementById('memoryScore').textContent =
+    'Moves: 0 | Pairs: 0/6';
+  document.getElementById('memoryResult').textContent = '';
+
+  board.innerHTML = '';
+
+  cards.forEach(symbol => {
+    const tile = document.createElement('button');
+    tile.className = 'memory-tile';
+    tile.textContent = '❔';
+    tile.dataset.symbol = symbol;
+
+    tile.addEventListener('click', function() {
+      if (memoryLocked || tile.classList.contains('matched') ||
+          tile === memoryFirst || tile.textContent !== '❔') return;
+
+      tile.textContent = symbol;
+
+      if (!memoryFirst) {
+        memoryFirst = tile;
+        return;
+      }
+
+      memoryMoves++;
+      document.getElementById('memoryScore').textContent =
+        `Moves: ${memoryMoves} | Pairs: ${memoryPairs}/6`;
+
+      if (memoryFirst.dataset.symbol === symbol) {
+        memoryFirst.classList.add('matched');
+        tile.classList.add('matched');
+        memoryFirst = null;
+        memoryPairs++;
+
+        document.getElementById('memoryScore').textContent =
+          `Moves: ${memoryMoves} | Pairs: ${memoryPairs}/6`;
+
+        if (memoryPairs === 6) {
+          document.getElementById('memoryResult').textContent =
+            'Amazing! You found all the pairs! 🎉';
+        }
+      } else {
+        memoryLocked = true;
+        const first = memoryFirst;
+        memoryFirst = null;
+
+        setTimeout(() => {
+          first.textContent = '❔';
+          tile.textContent = '❔';
+          memoryLocked = false;
+        }, 850);
+      }
+    });
+
+    board.appendChild(tile);
+  });
+}
+
+/* POP THE BALLOONS */
+let balloonsPopped = 0;
+
+function newBalloonGame() {
+  balloonsPopped = 0;
+
+  const area = document.getElementById('balloonArea');
+  area.innerHTML = '';
+
+  document.getElementById('balloonScore').textContent = 'Score: 0/10';
+  document.getElementById('balloonResult').textContent = '';
+
+  for (let i = 0; i < 10; i++) {
+    const balloon = document.createElement('button');
+    balloon.className = 'balloon';
+    balloon.textContent = '🎈';
+    balloon.setAttribute('aria-label', 'Pop balloon');
+
+    balloon.addEventListener('click', function() {
+      if (balloon.disabled) return;
+
+      balloon.disabled = true;
+      balloon.textContent = '✨';
+      balloonsPopped++;
+
+      document.getElementById('balloonScore').textContent =
+        `Score: ${balloonsPopped}/10`;
+
+      if (balloonsPopped === 10) {
+        document.getElementById('balloonResult').textContent =
+          'You did it! All balloons popped! 🥳';
+      }
+    });
+
+    area.appendChild(balloon);
+  }
+}
+
+/* SCRATCH CARD */
+function setupScratchCard() {
+  const canvas = document.getElementById('scratchCanvas');
+  const card = document.querySelector('.scratch-card');
+
+  if (!canvas || !card) return;
+
+  const rect = card.getBoundingClientRect();
+  const ratio = window.devicePixelRatio || 1;
+
+  canvas.width = rect.width * ratio;
+  canvas.height = rect.height * ratio;
+
+  const ctx = canvas.getContext('2d');
+  ctx.scale(ratio, ratio);
+
+  ctx.fillStyle = '#c9a28d';
+  ctx.fillRect(0, 0, rect.width, rect.height);
+
+  ctx.fillStyle = '#fffaf4';
+  ctx.font = 'bold 19px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('✨ Scratch Here ✨', rect.width / 2, rect.height / 2);
+
+  let scratching = false;
+
+  function scratch(event) {
+    if (!scratching) return;
+
+    const bounds = canvas.getBoundingClientRect();
+    const x = event.clientX - bounds.left;
+    const y = event.clientY - bounds.top;
+
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.beginPath();
+    ctx.arc(x, y, 24, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  canvas.addEventListener('pointerdown', function(event) {
+    scratching = true;
+    canvas.setPointerCapture(event.pointerId);
+    scratch(event);
+  });
+
+  canvas.addEventListener('pointermove', scratch);
+
+  canvas.addEventListener('pointerup', function() {
+    scratching = false;
+  });
+
+  canvas.addEventListener('pointercancel', function() {
+    scratching = false;
+  });
+}
+
+/* BIRTHDAY LETTER */
+function toggleLetter() {
+  const letter = document.getElementById('birthdayLetter');
+
+  letter.style.display =
+    letter.style.display === 'block' ? 'none' : 'block';
+}
+
+/* MYSTERY GIFT */
+function openGift() {
+  document.getElementById('giftMessage').style.display = 'block';
+  document.getElementById('giftHint').textContent =
+    'Your little surprise has arrived! 🎉';
+
+  document.getElementById('giftBox').textContent = '🎊';
+
+  document.getElementById('giftMessage').scrollIntoView({
+    behavior: 'smooth',
+    block: 'center'
+  });
+}
+
+/* BACKGROUND MUSIC */
+const bgMusic = document.getElementById('bgMusic');
+const musicButton = document.getElementById('musicButton');
+
+async function toggleMusic() {
+  if (bgMusic.paused) {
+    try {
+      await bgMusic.play();
+      musicButton.textContent = '⏸ Pause Music';
+    } catch (error) {
+      musicButton.textContent = '🎵 Tap to Play';
+    }
+  } else {
+    bgMusic.pause();
+    musicButton.textContent = '🎵 Play Music';
+  }
+}
+
+/* INITIALISE ALL FEATURES */
+newMemoryGame();
+newBalloonGame();
+setupScratchCard();
+
+window.addEventListener('resize', setupScratchCard);
+
+</script>
+</body>
+</html>
